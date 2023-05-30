@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: checkout code
+        uses: actions/checkout@v3 
+        
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2 # More information on this action can be found below in the 'AWS Credentials' section
         with:
@@ -22,7 +25,6 @@ jobs:
           aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           role-to-assume:  arn:aws:iam::631992905095:user/github-ci
           aws-region: ap-south-1
-
 
       - name: Login to Amazon ECR
         id: login-ecr
